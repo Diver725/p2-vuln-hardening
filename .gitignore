@@ -1,0 +1,13 @@
+# 日志与临时文件
+*.log
+*.tmp
+Thumbs.db
+.DS_Store
+# 密钥与敏感信息（绝不提交）
+*.key
+*.pem
+*.p12
+id_rsa
+id_rsa.pub
+.env
+secrets/
