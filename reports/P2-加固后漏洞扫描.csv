@@ -1,0 +1,376 @@
+IP,Hostname,Port,Port Protocol,CVSS,Severity,QoD,Solution Type,NVT Name,Summary,Specific Result,NVT OID,CVEs,Task ID,Task Name,Timestamp,Result ID,Impact,Solution,Affected Software/OS,Vulnerability Insight,Vulnerability Detection Method,Product Detection Result,BIDs,CERTs,Other References
+192.168.10.11,,,,6.5,Medium,80,"VendorFix","Missing Linux Kernel mitigations for RETbleed hardware vulnerabilities (INTEL-SA-00702, AMD-SB-1037)","The remote host is missing one or more known mitigation(s) on
+  Linux Kernel side for the referenced 'Retbleed' hardware vulnerabilities.","The Linux Kernel on the remote host is missing the mitigation for the ""retbleed"" hardware vulnerabilities as reported by the sysfs interface:
+
+sysfs file checked                               | Linux Kernel status (SSH response)
+-------------------------------------------------------------------------------------
+/sys/devices/system/cpu/vulnerabilities/retbleed | Vulnerable
+
+Notes on the ""Linux Kernel status (SSH response)"" column:
+- sysfs file missing: The sysfs interface is available but the sysfs file for this specific vulnerability is missing. This means the current Linux Kernel doesn't know this vulnerability yet. Based on this it is assumed that it doesn't provide any mitigation and that the target system is vulnerable.
+- Strings including ""Mitigation:"", ""Not affected"" or ""Vulnerable"" are reported directly by the Linux Kernel.
+- All other strings are responses to various SSH commands.
+",1.3.6.1.4.1.25623.1.0.104601,"CVE-2022-29900,CVE-2022-29901",43a9b358-ae13-4756-8639-eb91bf01cdfa,"P2-加固后漏洞扫描",2026-09-19T12:07:27Z,9fde994a-05cf-445c-ac23-147451adbe55,"","The following solutions exist:
+
+  - Update to a more recent Linux Kernel to receive mitigations on Kernel level and info about
+  the mitigation status from it
+
+  - Enable the mitigation(s) in the Linux Kernel (might be disabled depending on the configuration)
+
+  Additional possible mitigations (if provided by the vendor) are to:
+
+  - install a Microcode update
+
+  - update the BIOS of the Mainboard
+
+  Note: Please create an override for this result if one of the following applies:
+
+  - the sysfs file is not available but other mitigations like a Microcode update is already in
+  place
+
+  - the sysfs file is not available but the CPU of the host is not affected
+
+  - the reporting of the Linux Kernel is not correct (this is out of the control of this VT)","Various Intel and AMD CPUs. Please see the references for the
+  full list of affected CPUs.","","Checks previous gathered information on the mitigation status
+  reported by the Linux Kernel.
+Details:
+Missing Linux Kernel mitigations for 'RETbleed' hardware vulnerabilities (IN...
+(OID: 1.3.6.1.4.1.25623.1.0.104601)
+Version used: 2026-07-10T06:54:17Z
+","Product: cpe:/a:linux:kernel
+Method: Detection of Linux Kernel mitigation status for hardware vulnerabilities
+(OID: 1.3.6.1.4.1.25623.1.0.108765)
+","","DFN-CERT-2025-0072,DFN-CERT-2024-1554,DFN-CERT-2024-0371,DFN-CERT-2024-0370,DFN-CERT-2023-1595,DFN-CERT-2023-0863,DFN-CERT-2023-0376,DFN-CERT-2022-2919,DFN-CERT-2022-2914,DFN-CERT-2022-2858,DFN-CERT-2022-2609,DFN-CERT-2022-2569,DFN-CERT-2022-2469,DFN-CERT-2022-2382,DFN-CERT-2022-1828,DFN-CERT-2022-1823,DFN-CERT-2022-1821,DFN-CERT-2022-1802,DFN-CERT-2022-1725,DFN-CERT-2022-1664,DFN-CERT-2022-1663,DFN-CERT-2022-1661,DFN-CERT-2022-1640,DFN-CERT-2022-1598,DFN-CERT-2022-1596,DFN-CERT-2022-1592,DFN-CERT-2022-1586,DFN-CERT-2022-1581,DFN-CERT-2022-1570,DFN-CERT-2022-1568,DFN-CERT-2022-1565,DFN-CERT-2022-1564,DFN-CERT-2022-1563,DFN-CERT-2022-1557,DFN-CERT-2022-1555,DFN-CERT-2022-1554,WID-SEC-2024-0794,WID-SEC-2023-1737,WID-SEC-2022-0665,WID-SEC-2022-0659,WID-SEC-2022-0650",""
+192.168.10.13,,,,6.5,Medium,80,"VendorFix","Missing Linux Kernel mitigations for RETbleed hardware vulnerabilities (INTEL-SA-00702, AMD-SB-1037)","The remote host is missing one or more known mitigation(s) on
+  Linux Kernel side for the referenced 'Retbleed' hardware vulnerabilities.","The Linux Kernel on the remote host is missing the mitigation for the ""retbleed"" hardware vulnerabilities as reported by the sysfs interface:
+
+sysfs file checked                               | Linux Kernel status (SSH response)
+-------------------------------------------------------------------------------------
+/sys/devices/system/cpu/vulnerabilities/retbleed | Vulnerable
+
+Notes on the ""Linux Kernel status (SSH response)"" column:
+- sysfs file missing: The sysfs interface is available but the sysfs file for this specific vulnerability is missing. This means the current Linux Kernel doesn't know this vulnerability yet. Based on this it is assumed that it doesn't provide any mitigation and that the target system is vulnerable.
+- Strings including ""Mitigation:"", ""Not affected"" or ""Vulnerable"" are reported directly by the Linux Kernel.
+- All other strings are responses to various SSH commands.
+",1.3.6.1.4.1.25623.1.0.104601,"CVE-2022-29900,CVE-2022-29901",43a9b358-ae13-4756-8639-eb91bf01cdfa,"P2-加固后漏洞扫描",2026-09-19T12:16:32Z,a48db9cd-538b-44b6-995f-21226fe1192d,"","The following solutions exist:
+
+  - Update to a more recent Linux Kernel to receive mitigations on Kernel level and info about
+  the mitigation status from it
+
+  - Enable the mitigation(s) in the Linux Kernel (might be disabled depending on the configuration)
+
+  Additional possible mitigations (if provided by the vendor) are to:
+
+  - install a Microcode update
+
+  - update the BIOS of the Mainboard
+
+  Note: Please create an override for this result if one of the following applies:
+
+  - the sysfs file is not available but other mitigations like a Microcode update is already in
+  place
+
+  - the sysfs file is not available but the CPU of the host is not affected
+
+  - the reporting of the Linux Kernel is not correct (this is out of the control of this VT)","Various Intel and AMD CPUs. Please see the references for the
+  full list of affected CPUs.","","Checks previous gathered information on the mitigation status
+  reported by the Linux Kernel.
+Details:
+Missing Linux Kernel mitigations for 'RETbleed' hardware vulnerabilities (IN...
+(OID: 1.3.6.1.4.1.25623.1.0.104601)
+Version used: 2026-07-10T06:54:17Z
+","Product: cpe:/a:linux:kernel
+Method: Detection of Linux Kernel mitigation status for hardware vulnerabilities
+(OID: 1.3.6.1.4.1.25623.1.0.108765)
+","","DFN-CERT-2025-0072,DFN-CERT-2024-1554,DFN-CERT-2024-0371,DFN-CERT-2024-0370,DFN-CERT-2023-1595,DFN-CERT-2023-0863,DFN-CERT-2023-0376,DFN-CERT-2022-2919,DFN-CERT-2022-2914,DFN-CERT-2022-2858,DFN-CERT-2022-2609,DFN-CERT-2022-2569,DFN-CERT-2022-2469,DFN-CERT-2022-2382,DFN-CERT-2022-1828,DFN-CERT-2022-1823,DFN-CERT-2022-1821,DFN-CERT-2022-1802,DFN-CERT-2022-1725,DFN-CERT-2022-1664,DFN-CERT-2022-1663,DFN-CERT-2022-1661,DFN-CERT-2022-1640,DFN-CERT-2022-1598,DFN-CERT-2022-1596,DFN-CERT-2022-1592,DFN-CERT-2022-1586,DFN-CERT-2022-1581,DFN-CERT-2022-1570,DFN-CERT-2022-1568,DFN-CERT-2022-1565,DFN-CERT-2022-1564,DFN-CERT-2022-1563,DFN-CERT-2022-1557,DFN-CERT-2022-1555,DFN-CERT-2022-1554,WID-SEC-2024-0794,WID-SEC-2023-1737,WID-SEC-2022-0665,WID-SEC-2022-0659,WID-SEC-2022-0650",""
+192.168.10.12,,,,6.5,Medium,80,"VendorFix","Missing Linux Kernel mitigations for RETbleed hardware vulnerabilities (INTEL-SA-00702, AMD-SB-1037)","The remote host is missing one or more known mitigation(s) on
+  Linux Kernel side for the referenced 'Retbleed' hardware vulnerabilities.","The Linux Kernel on the remote host is missing the mitigation for the ""retbleed"" hardware vulnerabilities as reported by the sysfs interface:
+
+sysfs file checked                               | Linux Kernel status (SSH response)
+-------------------------------------------------------------------------------------
+/sys/devices/system/cpu/vulnerabilities/retbleed | Vulnerable
+
+Notes on the ""Linux Kernel status (SSH response)"" column:
+- sysfs file missing: The sysfs interface is available but the sysfs file for this specific vulnerability is missing. This means the current Linux Kernel doesn't know this vulnerability yet. Based on this it is assumed that it doesn't provide any mitigation and that the target system is vulnerable.
+- Strings including ""Mitigation:"", ""Not affected"" or ""Vulnerable"" are reported directly by the Linux Kernel.
+- All other strings are responses to various SSH commands.
+",1.3.6.1.4.1.25623.1.0.104601,"CVE-2022-29900,CVE-2022-29901",43a9b358-ae13-4756-8639-eb91bf01cdfa,"P2-加固后漏洞扫描",2026-09-19T11:58:06Z,50aa5509-a0fa-412d-a5c0-0a428e69641f,"","The following solutions exist:
+
+  - Update to a more recent Linux Kernel to receive mitigations on Kernel level and info about
+  the mitigation status from it
+
+  - Enable the mitigation(s) in the Linux Kernel (might be disabled depending on the configuration)
+
+  Additional possible mitigations (if provided by the vendor) are to:
+
+  - install a Microcode update
+
+  - update the BIOS of the Mainboard
+
+  Note: Please create an override for this result if one of the following applies:
+
+  - the sysfs file is not available but other mitigations like a Microcode update is already in
+  place
+
+  - the sysfs file is not available but the CPU of the host is not affected
+
+  - the reporting of the Linux Kernel is not correct (this is out of the control of this VT)","Various Intel and AMD CPUs. Please see the references for the
+  full list of affected CPUs.","","Checks previous gathered information on the mitigation status
+  reported by the Linux Kernel.
+Details:
+Missing Linux Kernel mitigations for 'RETbleed' hardware vulnerabilities (IN...
+(OID: 1.3.6.1.4.1.25623.1.0.104601)
+Version used: 2026-07-10T06:54:17Z
+","Product: cpe:/a:linux:kernel
+Method: Detection of Linux Kernel mitigation status for hardware vulnerabilities
+(OID: 1.3.6.1.4.1.25623.1.0.108765)
+","","DFN-CERT-2025-0072,DFN-CERT-2024-1554,DFN-CERT-2024-0371,DFN-CERT-2024-0370,DFN-CERT-2023-1595,DFN-CERT-2023-0863,DFN-CERT-2023-0376,DFN-CERT-2022-2919,DFN-CERT-2022-2914,DFN-CERT-2022-2858,DFN-CERT-2022-2609,DFN-CERT-2022-2569,DFN-CERT-2022-2469,DFN-CERT-2022-2382,DFN-CERT-2022-1828,DFN-CERT-2022-1823,DFN-CERT-2022-1821,DFN-CERT-2022-1802,DFN-CERT-2022-1725,DFN-CERT-2022-1664,DFN-CERT-2022-1663,DFN-CERT-2022-1661,DFN-CERT-2022-1640,DFN-CERT-2022-1598,DFN-CERT-2022-1596,DFN-CERT-2022-1592,DFN-CERT-2022-1586,DFN-CERT-2022-1581,DFN-CERT-2022-1570,DFN-CERT-2022-1568,DFN-CERT-2022-1565,DFN-CERT-2022-1564,DFN-CERT-2022-1563,DFN-CERT-2022-1557,DFN-CERT-2022-1555,DFN-CERT-2022-1554,WID-SEC-2024-0794,WID-SEC-2023-1737,WID-SEC-2022-0665,WID-SEC-2022-0659,WID-SEC-2022-0650",""
+192.168.10.11,,,,5.5,Medium,80,"VendorFix","Missing Linux Kernel mitigations for Processor MMIO Stale Data hardware vulnerabilities (INTEL-SA-00615)","The remote host is missing one or more known mitigation(s) on
+  Linux Kernel side for the referenced 'Processor MMIO Stale Data' hardware vulnerabilities.","The Linux Kernel on the remote host is missing the mitigation for the ""mmio_stale_data"" hardware vulnerabilities as reported by the sysfs interface:
+
+sysfs file checked                                      | Linux Kernel status (SSH response)
+---------------------------------------------------------------------------------------------------------------------------------------
+/sys/devices/system/cpu/vulnerabilities/mmio_stale_data | Vulnerable: Clear CPU buffers attempted, no microcode; SMT Host state unknown
+
+Notes on the ""Linux Kernel status (SSH response)"" column:
+- sysfs file missing: The sysfs interface is available but the sysfs file for this specific vulnerability is missing. This means the current Linux Kernel doesn't know this vulnerability yet. Based on this it is assumed that it doesn't provide any mitigation and that the target system is vulnerable.
+- Strings including ""Mitigation:"", ""Not affected"" or ""Vulnerable"" are reported directly by the Linux Kernel.
+- All other strings are responses to various SSH commands.
+",1.3.6.1.4.1.25623.1.0.104247,"CVE-2022-21123,CVE-2022-21125,CVE-2022-21166",43a9b358-ae13-4756-8639-eb91bf01cdfa,"P2-加固后漏洞扫描",2026-09-19T12:07:27Z,6485945a-71a6-4187-bd0a-b06ab40628b5,"","The following solutions exist:
+
+  - Update to a more recent Linux Kernel to receive mitigations on Kernel level and info about
+  the mitigation status from it
+
+  - Enable the mitigation(s) in the Linux Kernel (might be disabled depending on the configuration)
+
+  Additional possible mitigations (if provided by the vendor) are to:
+
+  - install a Microcode update
+
+  - update the BIOS of the Mainboard
+
+  Note: Please create an override for this result if one of the following applies:
+
+  - the sysfs file is not available but other mitigations like a Microcode update is already in
+  place
+
+  - the sysfs file is not available but the CPU of the host is not affected
+
+  - the reporting of the Linux Kernel is not correct (this is out of the control of this VT)","Various Intel CPUs. Please see the references for the full list
+  of affected CPUs.","","Checks previous gathered information on the mitigation status
+  reported by the Linux Kernel.
+Details:
+Missing Linux Kernel mitigations for 'Processor MMIO Stale Data' hardware vu...
+(OID: 1.3.6.1.4.1.25623.1.0.104247)
+Version used: 2026-07-10T06:54:17Z
+","Product: cpe:/a:linux:kernel
+Method: Detection of Linux Kernel mitigation status for hardware vulnerabilities
+(OID: 1.3.6.1.4.1.25623.1.0.108765)
+","","DFN-CERT-2023-1230,DFN-CERT-2023-0376,DFN-CERT-2022-2858,DFN-CERT-2022-2569,DFN-CERT-2022-2446,DFN-CERT-2022-2304,DFN-CERT-2022-1725,DFN-CERT-2022-1664,DFN-CERT-2022-1663,DFN-CERT-2022-1661,DFN-CERT-2022-1640,DFN-CERT-2022-1636,DFN-CERT-2022-1596,DFN-CERT-2022-1575,DFN-CERT-2022-1552,DFN-CERT-2022-1529,DFN-CERT-2022-1523,DFN-CERT-2022-1519,DFN-CERT-2022-1488,DFN-CERT-2022-1481,DFN-CERT-2022-1424,DFN-CERT-2022-1413,DFN-CERT-2022-1405,DFN-CERT-2022-1378,DFN-CERT-2022-1375,DFN-CERT-2022-1371,DFN-CERT-2022-1369,DFN-CERT-2022-1365,DFN-CERT-2022-1358,DFN-CERT-2022-1345,DFN-CERT-2022-1343,DFN-CERT-2022-1342,DFN-CERT-2022-1341,DFN-CERT-2022-1338,DFN-CERT-2022-1336,DFN-CERT-2022-1334,DFN-CERT-2022-1333,DFN-CERT-2022-1328,WID-SEC-2023-2031,WID-SEC-2023-1432,WID-SEC-2022-1767,WID-SEC-2022-0336,WID-SEC-2022-0330,WID-SEC-2022-0303",""
+192.168.10.11,,,,5.5,Medium,80,"VendorFix","Missing Linux Kernel mitigations for SSB - Speculative Store Bypass hardware vulnerabilities","The remote host is missing one or more known mitigation(s) on
+  Linux Kernel side for the referenced 'SSB - Speculative Store Bypass' hardware vulnerabilities.","The Linux Kernel on the remote host is missing the mitigation for the ""spec_store_bypass"" hardware vulnerabilities as reported by the sysfs interface:
+
+sysfs file checked                                        | Linux Kernel status (SSH response)
+----------------------------------------------------------------------------------------------
+/sys/devices/system/cpu/vulnerabilities/spec_store_bypass | Vulnerable
+
+Notes on the ""Linux Kernel status (SSH response)"" column:
+- sysfs file missing: The sysfs interface is available but the sysfs file for this specific vulnerability is missing. This means the current Linux Kernel doesn't know this vulnerability yet. Based on this it is assumed that it doesn't provide any mitigation and that the target system is vulnerable.
+- Strings including ""Mitigation:"", ""Not affected"" or ""Vulnerable"" are reported directly by the Linux Kernel.
+- All other strings are responses to various SSH commands.
+",1.3.6.1.4.1.25623.1.0.108842,"CVE-2018-3639",43a9b358-ae13-4756-8639-eb91bf01cdfa,"P2-加固后漏洞扫描",2026-09-19T12:07:27Z,df28edda-a561-4fa2-a41e-b1bcfd19a209,"","The following solutions exist:
+
+  - Update to a more recent Linux Kernel to receive mitigations on Kernel level and info about
+  the mitigation status from it
+
+  - Enable the mitigation(s) in the Linux Kernel (might be disabled depending on the configuration)
+
+  Additional possible mitigations (if provided by the vendor) are to:
+
+  - install a Microcode update
+
+  - update the BIOS of the Mainboard
+
+  Note: Please create an override for this result if one of the following applies:
+
+  - the sysfs file is not available but other mitigations like a Microcode update is already in
+  place
+
+  - the sysfs file is not available but the CPU of the host is not affected
+
+  - the reporting of the Linux Kernel is not correct (this is out of the control of this VT)","","","Checks previous gathered information on the mitigation status
+  reported by the Linux Kernel.
+Details:
+Missing Linux Kernel mitigations for 'SSB - Speculative Store Bypass' hardwa...
+(OID: 1.3.6.1.4.1.25623.1.0.108842)
+Version used: 2026-07-10T06:54:17Z
+","Product: cpe:/a:linux:kernel
+Method: Detection of Linux Kernel mitigation status for hardware vulnerabilities
+(OID: 1.3.6.1.4.1.25623.1.0.108765)
+","","DFN-CERT-2023-1947,DFN-CERT-2023-1924,DFN-CERT-2023-1904,DFN-CERT-2023-1900,DFN-CERT-2021-2551,DFN-CERT-2020-1987,DFN-CERT-2020-1935,DFN-CERT-2020-1912,DFN-CERT-2020-1783,DFN-CERT-2020-1473,DFN-CERT-2020-1078,DFN-CERT-2019-0622,DFN-CERT-2019-0544,DFN-CERT-2019-0286,DFN-CERT-2019-0258,DFN-CERT-2019-0168,DFN-CERT-2019-0108,DFN-CERT-2019-0069,DFN-CERT-2019-0059,DFN-CERT-2018-2554,DFN-CERT-2018-2441,DFN-CERT-2018-2399,DFN-CERT-2018-2349,DFN-CERT-2018-2302,DFN-CERT-2018-2217,DFN-CERT-2018-2213,DFN-CERT-2018-1982,DFN-CERT-2018-1929,DFN-CERT-2018-1869,DFN-CERT-2018-1767,DFN-CERT-2018-1734,DFN-CERT-2018-1658,DFN-CERT-2018-1651,DFN-CERT-2018-1627,DFN-CERT-2018-1624,DFN-CERT-2018-1500,DFN-CERT-2018-1494,DFN-CERT-2018-1493,DFN-CERT-2018-1446,DFN-CERT-2018-1435,DFN-CERT-2018-1374,DFN-CERT-2018-1353,DFN-CERT-2018-1351,DFN-CERT-2018-1323,DFN-CERT-2018-1304,DFN-CERT-2018-1270,DFN-CERT-2018-1260,DFN-CERT-2018-1234,DFN-CERT-2018-1228,DFN-CERT-2018-1205,DFN-CERT-2018-1183,DFN-CERT-2018-1151,DFN-CERT-2018-1129,DFN-CERT-2018-1117,DFN-CERT-2018-1105,DFN-CERT-2018-1042,DFN-CERT-2018-1041,DFN-CERT-2018-1025,DFN-CERT-2018-1023,DFN-CERT-2018-0993,DFN-CERT-2018-0992,DFN-CERT-2018-0991,DFN-CERT-2018-0987,DFN-CERT-2018-0976,DFN-CERT-2018-0973,DFN-CERT-2018-0972,DFN-CERT-2018-0970,DFN-CERT-2018-0966,WID-SEC-2023-2917,WID-SEC-2023-2072,CB-K19/0271,CB-K19/0047,CB-K18/1050,CB-K18/0686,CB-K18/0682",""
+192.168.10.13,,,,5.5,Medium,80,"VendorFix","Missing Linux Kernel mitigations for Processor MMIO Stale Data hardware vulnerabilities (INTEL-SA-00615)","The remote host is missing one or more known mitigation(s) on
+  Linux Kernel side for the referenced 'Processor MMIO Stale Data' hardware vulnerabilities.","The Linux Kernel on the remote host is missing the mitigation for the ""mmio_stale_data"" hardware vulnerabilities as reported by the sysfs interface:
+
+sysfs file checked                                      | Linux Kernel status (SSH response)
+---------------------------------------------------------------------------------------------------------------------------------------
+/sys/devices/system/cpu/vulnerabilities/mmio_stale_data | Vulnerable: Clear CPU buffers attempted, no microcode; SMT Host state unknown
+
+Notes on the ""Linux Kernel status (SSH response)"" column:
+- sysfs file missing: The sysfs interface is available but the sysfs file for this specific vulnerability is missing. This means the current Linux Kernel doesn't know this vulnerability yet. Based on this it is assumed that it doesn't provide any mitigation and that the target system is vulnerable.
+- Strings including ""Mitigation:"", ""Not affected"" or ""Vulnerable"" are reported directly by the Linux Kernel.
+- All other strings are responses to various SSH commands.
+",1.3.6.1.4.1.25623.1.0.104247,"CVE-2022-21123,CVE-2022-21125,CVE-2022-21166",43a9b358-ae13-4756-8639-eb91bf01cdfa,"P2-加固后漏洞扫描",2026-09-19T12:16:32Z,af04efeb-c246-4515-9eed-b88c67fc246a,"","The following solutions exist:
+
+  - Update to a more recent Linux Kernel to receive mitigations on Kernel level and info about
+  the mitigation status from it
+
+  - Enable the mitigation(s) in the Linux Kernel (might be disabled depending on the configuration)
+
+  Additional possible mitigations (if provided by the vendor) are to:
+
+  - install a Microcode update
+
+  - update the BIOS of the Mainboard
+
+  Note: Please create an override for this result if one of the following applies:
+
+  - the sysfs file is not available but other mitigations like a Microcode update is already in
+  place
+
+  - the sysfs file is not available but the CPU of the host is not affected
+
+  - the reporting of the Linux Kernel is not correct (this is out of the control of this VT)","Various Intel CPUs. Please see the references for the full list
+  of affected CPUs.","","Checks previous gathered information on the mitigation status
+  reported by the Linux Kernel.
+Details:
+Missing Linux Kernel mitigations for 'Processor MMIO Stale Data' hardware vu...
+(OID: 1.3.6.1.4.1.25623.1.0.104247)
+Version used: 2026-07-10T06:54:17Z
+","Product: cpe:/a:linux:kernel
+Method: Detection of Linux Kernel mitigation status for hardware vulnerabilities
+(OID: 1.3.6.1.4.1.25623.1.0.108765)
+","","DFN-CERT-2023-1230,DFN-CERT-2023-0376,DFN-CERT-2022-2858,DFN-CERT-2022-2569,DFN-CERT-2022-2446,DFN-CERT-2022-2304,DFN-CERT-2022-1725,DFN-CERT-2022-1664,DFN-CERT-2022-1663,DFN-CERT-2022-1661,DFN-CERT-2022-1640,DFN-CERT-2022-1636,DFN-CERT-2022-1596,DFN-CERT-2022-1575,DFN-CERT-2022-1552,DFN-CERT-2022-1529,DFN-CERT-2022-1523,DFN-CERT-2022-1519,DFN-CERT-2022-1488,DFN-CERT-2022-1481,DFN-CERT-2022-1424,DFN-CERT-2022-1413,DFN-CERT-2022-1405,DFN-CERT-2022-1378,DFN-CERT-2022-1375,DFN-CERT-2022-1371,DFN-CERT-2022-1369,DFN-CERT-2022-1365,DFN-CERT-2022-1358,DFN-CERT-2022-1345,DFN-CERT-2022-1343,DFN-CERT-2022-1342,DFN-CERT-2022-1341,DFN-CERT-2022-1338,DFN-CERT-2022-1336,DFN-CERT-2022-1334,DFN-CERT-2022-1333,DFN-CERT-2022-1328,WID-SEC-2023-2031,WID-SEC-2023-1432,WID-SEC-2022-1767,WID-SEC-2022-0336,WID-SEC-2022-0330,WID-SEC-2022-0303",""
+192.168.10.13,,,,5.5,Medium,80,"VendorFix","Missing Linux Kernel mitigations for SSB - Speculative Store Bypass hardware vulnerabilities","The remote host is missing one or more known mitigation(s) on
+  Linux Kernel side for the referenced 'SSB - Speculative Store Bypass' hardware vulnerabilities.","The Linux Kernel on the remote host is missing the mitigation for the ""spec_store_bypass"" hardware vulnerabilities as reported by the sysfs interface:
+
+sysfs file checked                                        | Linux Kernel status (SSH response)
+----------------------------------------------------------------------------------------------
+/sys/devices/system/cpu/vulnerabilities/spec_store_bypass | Vulnerable
+
+Notes on the ""Linux Kernel status (SSH response)"" column:
+- sysfs file missing: The sysfs interface is available but the sysfs file for this specific vulnerability is missing. This means the current Linux Kernel doesn't know this vulnerability yet. Based on this it is assumed that it doesn't provide any mitigation and that the target system is vulnerable.
+- Strings including ""Mitigation:"", ""Not affected"" or ""Vulnerable"" are reported directly by the Linux Kernel.
+- All other strings are responses to various SSH commands.
+",1.3.6.1.4.1.25623.1.0.108842,"CVE-2018-3639",43a9b358-ae13-4756-8639-eb91bf01cdfa,"P2-加固后漏洞扫描",2026-09-19T12:16:32Z,51403d87-4c18-4811-9d3f-e69dda9b2627,"","The following solutions exist:
+
+  - Update to a more recent Linux Kernel to receive mitigations on Kernel level and info about
+  the mitigation status from it
+
+  - Enable the mitigation(s) in the Linux Kernel (might be disabled depending on the configuration)
+
+  Additional possible mitigations (if provided by the vendor) are to:
+
+  - install a Microcode update
+
+  - update the BIOS of the Mainboard
+
+  Note: Please create an override for this result if one of the following applies:
+
+  - the sysfs file is not available but other mitigations like a Microcode update is already in
+  place
+
+  - the sysfs file is not available but the CPU of the host is not affected
+
+  - the reporting of the Linux Kernel is not correct (this is out of the control of this VT)","","","Checks previous gathered information on the mitigation status
+  reported by the Linux Kernel.
+Details:
+Missing Linux Kernel mitigations for 'SSB - Speculative Store Bypass' hardwa...
+(OID: 1.3.6.1.4.1.25623.1.0.108842)
+Version used: 2026-07-10T06:54:17Z
+","Product: cpe:/a:linux:kernel
+Method: Detection of Linux Kernel mitigation status for hardware vulnerabilities
+(OID: 1.3.6.1.4.1.25623.1.0.108765)
+","","DFN-CERT-2023-1947,DFN-CERT-2023-1924,DFN-CERT-2023-1904,DFN-CERT-2023-1900,DFN-CERT-2021-2551,DFN-CERT-2020-1987,DFN-CERT-2020-1935,DFN-CERT-2020-1912,DFN-CERT-2020-1783,DFN-CERT-2020-1473,DFN-CERT-2020-1078,DFN-CERT-2019-0622,DFN-CERT-2019-0544,DFN-CERT-2019-0286,DFN-CERT-2019-0258,DFN-CERT-2019-0168,DFN-CERT-2019-0108,DFN-CERT-2019-0069,DFN-CERT-2019-0059,DFN-CERT-2018-2554,DFN-CERT-2018-2441,DFN-CERT-2018-2399,DFN-CERT-2018-2349,DFN-CERT-2018-2302,DFN-CERT-2018-2217,DFN-CERT-2018-2213,DFN-CERT-2018-1982,DFN-CERT-2018-1929,DFN-CERT-2018-1869,DFN-CERT-2018-1767,DFN-CERT-2018-1734,DFN-CERT-2018-1658,DFN-CERT-2018-1651,DFN-CERT-2018-1627,DFN-CERT-2018-1624,DFN-CERT-2018-1500,DFN-CERT-2018-1494,DFN-CERT-2018-1493,DFN-CERT-2018-1446,DFN-CERT-2018-1435,DFN-CERT-2018-1374,DFN-CERT-2018-1353,DFN-CERT-2018-1351,DFN-CERT-2018-1323,DFN-CERT-2018-1304,DFN-CERT-2018-1270,DFN-CERT-2018-1260,DFN-CERT-2018-1234,DFN-CERT-2018-1228,DFN-CERT-2018-1205,DFN-CERT-2018-1183,DFN-CERT-2018-1151,DFN-CERT-2018-1129,DFN-CERT-2018-1117,DFN-CERT-2018-1105,DFN-CERT-2018-1042,DFN-CERT-2018-1041,DFN-CERT-2018-1025,DFN-CERT-2018-1023,DFN-CERT-2018-0993,DFN-CERT-2018-0992,DFN-CERT-2018-0991,DFN-CERT-2018-0987,DFN-CERT-2018-0976,DFN-CERT-2018-0973,DFN-CERT-2018-0972,DFN-CERT-2018-0970,DFN-CERT-2018-0966,WID-SEC-2023-2917,WID-SEC-2023-2072,CB-K19/0271,CB-K19/0047,CB-K18/1050,CB-K18/0686,CB-K18/0682",""
+192.168.10.12,,,,5.5,Medium,80,"VendorFix","Missing Linux Kernel mitigations for Processor MMIO Stale Data hardware vulnerabilities (INTEL-SA-00615)","The remote host is missing one or more known mitigation(s) on
+  Linux Kernel side for the referenced 'Processor MMIO Stale Data' hardware vulnerabilities.","The Linux Kernel on the remote host is missing the mitigation for the ""mmio_stale_data"" hardware vulnerabilities as reported by the sysfs interface:
+
+sysfs file checked                                      | Linux Kernel status (SSH response)
+---------------------------------------------------------------------------------------------------------------------------------------
+/sys/devices/system/cpu/vulnerabilities/mmio_stale_data | Vulnerable: Clear CPU buffers attempted, no microcode; SMT Host state unknown
+
+Notes on the ""Linux Kernel status (SSH response)"" column:
+- sysfs file missing: The sysfs interface is available but the sysfs file for this specific vulnerability is missing. This means the current Linux Kernel doesn't know this vulnerability yet. Based on this it is assumed that it doesn't provide any mitigation and that the target system is vulnerable.
+- Strings including ""Mitigation:"", ""Not affected"" or ""Vulnerable"" are reported directly by the Linux Kernel.
+- All other strings are responses to various SSH commands.
+",1.3.6.1.4.1.25623.1.0.104247,"CVE-2022-21123,CVE-2022-21125,CVE-2022-21166",43a9b358-ae13-4756-8639-eb91bf01cdfa,"P2-加固后漏洞扫描",2026-09-19T11:58:06Z,daa121ab-d354-4def-8421-ebbe2270e66c,"","The following solutions exist:
+
+  - Update to a more recent Linux Kernel to receive mitigations on Kernel level and info about
+  the mitigation status from it
+
+  - Enable the mitigation(s) in the Linux Kernel (might be disabled depending on the configuration)
+
+  Additional possible mitigations (if provided by the vendor) are to:
+
+  - install a Microcode update
+
+  - update the BIOS of the Mainboard
+
+  Note: Please create an override for this result if one of the following applies:
+
+  - the sysfs file is not available but other mitigations like a Microcode update is already in
+  place
+
+  - the sysfs file is not available but the CPU of the host is not affected
+
+  - the reporting of the Linux Kernel is not correct (this is out of the control of this VT)","Various Intel CPUs. Please see the references for the full list
+  of affected CPUs.","","Checks previous gathered information on the mitigation status
+  reported by the Linux Kernel.
+Details:
+Missing Linux Kernel mitigations for 'Processor MMIO Stale Data' hardware vu...
+(OID: 1.3.6.1.4.1.25623.1.0.104247)
+Version used: 2026-07-10T06:54:17Z
+","Product: cpe:/a:linux:kernel
+Method: Detection of Linux Kernel mitigation status for hardware vulnerabilities
+(OID: 1.3.6.1.4.1.25623.1.0.108765)
+","","DFN-CERT-2023-1230,DFN-CERT-2023-0376,DFN-CERT-2022-2858,DFN-CERT-2022-2569,DFN-CERT-2022-2446,DFN-CERT-2022-2304,DFN-CERT-2022-1725,DFN-CERT-2022-1664,DFN-CERT-2022-1663,DFN-CERT-2022-1661,DFN-CERT-2022-1640,DFN-CERT-2022-1636,DFN-CERT-2022-1596,DFN-CERT-2022-1575,DFN-CERT-2022-1552,DFN-CERT-2022-1529,DFN-CERT-2022-1523,DFN-CERT-2022-1519,DFN-CERT-2022-1488,DFN-CERT-2022-1481,DFN-CERT-2022-1424,DFN-CERT-2022-1413,DFN-CERT-2022-1405,DFN-CERT-2022-1378,DFN-CERT-2022-1375,DFN-CERT-2022-1371,DFN-CERT-2022-1369,DFN-CERT-2022-1365,DFN-CERT-2022-1358,DFN-CERT-2022-1345,DFN-CERT-2022-1343,DFN-CERT-2022-1342,DFN-CERT-2022-1341,DFN-CERT-2022-1338,DFN-CERT-2022-1336,DFN-CERT-2022-1334,DFN-CERT-2022-1333,DFN-CERT-2022-1328,WID-SEC-2023-2031,WID-SEC-2023-1432,WID-SEC-2022-1767,WID-SEC-2022-0336,WID-SEC-2022-0330,WID-SEC-2022-0303",""
+192.168.10.12,,,,5.5,Medium,80,"VendorFix","Missing Linux Kernel mitigations for SSB - Speculative Store Bypass hardware vulnerabilities","The remote host is missing one or more known mitigation(s) on
+  Linux Kernel side for the referenced 'SSB - Speculative Store Bypass' hardware vulnerabilities.","The Linux Kernel on the remote host is missing the mitigation for the ""spec_store_bypass"" hardware vulnerabilities as reported by the sysfs interface:
+
+sysfs file checked                                        | Linux Kernel status (SSH response)
+----------------------------------------------------------------------------------------------
+/sys/devices/system/cpu/vulnerabilities/spec_store_bypass | Vulnerable
+
+Notes on the ""Linux Kernel status (SSH response)"" column:
+- sysfs file missing: The sysfs interface is available but the sysfs file for this specific vulnerability is missing. This means the current Linux Kernel doesn't know this vulnerability yet. Based on this it is assumed that it doesn't provide any mitigation and that the target system is vulnerable.
+- Strings including ""Mitigation:"", ""Not affected"" or ""Vulnerable"" are reported directly by the Linux Kernel.
+- All other strings are responses to various SSH commands.
+",1.3.6.1.4.1.25623.1.0.108842,"CVE-2018-3639",43a9b358-ae13-4756-8639-eb91bf01cdfa,"P2-加固后漏洞扫描",2026-09-19T11:58:06Z,1d2110d6-d7b5-4ef6-beec-7bb1475dc7c1,"","The following solutions exist:
+
+  - Update to a more recent Linux Kernel to receive mitigations on Kernel level and info about
+  the mitigation status from it
+
+  - Enable the mitigation(s) in the Linux Kernel (might be disabled depending on the configuration)
+
+  Additional possible mitigations (if provided by the vendor) are to:
+
+  - install a Microcode update
+
+  - update the BIOS of the Mainboard
+
+  Note: Please create an override for this result if one of the following applies:
+
+  - the sysfs file is not available but other mitigations like a Microcode update is already in
+  place
+
+  - the sysfs file is not available but the CPU of the host is not affected
+
+  - the reporting of the Linux Kernel is not correct (this is out of the control of this VT)","","","Checks previous gathered information on the mitigation status
+  reported by the Linux Kernel.
+Details:
+Missing Linux Kernel mitigations for 'SSB - Speculative Store Bypass' hardwa...
+(OID: 1.3.6.1.4.1.25623.1.0.108842)
+Version used: 2026-07-10T06:54:17Z
+","Product: cpe:/a:linux:kernel
+Method: Detection of Linux Kernel mitigation status for hardware vulnerabilities
+(OID: 1.3.6.1.4.1.25623.1.0.108765)
+","","DFN-CERT-2023-1947,DFN-CERT-2023-1924,DFN-CERT-2023-1904,DFN-CERT-2023-1900,DFN-CERT-2021-2551,DFN-CERT-2020-1987,DFN-CERT-2020-1935,DFN-CERT-2020-1912,DFN-CERT-2020-1783,DFN-CERT-2020-1473,DFN-CERT-2020-1078,DFN-CERT-2019-0622,DFN-CERT-2019-0544,DFN-CERT-2019-0286,DFN-CERT-2019-0258,DFN-CERT-2019-0168,DFN-CERT-2019-0108,DFN-CERT-2019-0069,DFN-CERT-2019-0059,DFN-CERT-2018-2554,DFN-CERT-2018-2441,DFN-CERT-2018-2399,DFN-CERT-2018-2349,DFN-CERT-2018-2302,DFN-CERT-2018-2217,DFN-CERT-2018-2213,DFN-CERT-2018-1982,DFN-CERT-2018-1929,DFN-CERT-2018-1869,DFN-CERT-2018-1767,DFN-CERT-2018-1734,DFN-CERT-2018-1658,DFN-CERT-2018-1651,DFN-CERT-2018-1627,DFN-CERT-2018-1624,DFN-CERT-2018-1500,DFN-CERT-2018-1494,DFN-CERT-2018-1493,DFN-CERT-2018-1446,DFN-CERT-2018-1435,DFN-CERT-2018-1374,DFN-CERT-2018-1353,DFN-CERT-2018-1351,DFN-CERT-2018-1323,DFN-CERT-2018-1304,DFN-CERT-2018-1270,DFN-CERT-2018-1260,DFN-CERT-2018-1234,DFN-CERT-2018-1228,DFN-CERT-2018-1205,DFN-CERT-2018-1183,DFN-CERT-2018-1151,DFN-CERT-2018-1129,DFN-CERT-2018-1117,DFN-CERT-2018-1105,DFN-CERT-2018-1042,DFN-CERT-2018-1041,DFN-CERT-2018-1025,DFN-CERT-2018-1023,DFN-CERT-2018-0993,DFN-CERT-2018-0992,DFN-CERT-2018-0991,DFN-CERT-2018-0987,DFN-CERT-2018-0976,DFN-CERT-2018-0973,DFN-CERT-2018-0972,DFN-CERT-2018-0970,DFN-CERT-2018-0966,WID-SEC-2023-2917,WID-SEC-2023-2072,CB-K19/0271,CB-K19/0047,CB-K18/1050,CB-K18/0686,CB-K18/0682",""

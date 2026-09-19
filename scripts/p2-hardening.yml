@@ -1,0 +1,215 @@
+---
+- name: P2 target hardening
+  hosts: targets
+  become: true
+  gather_facts: true
+
+  vars:
+    authorized_macs: "hmac-sha2-512-etm@openssh.com,hmac-sha2-256-etm@openssh.com,umac-128-etm@openssh.com,hmac-sha2-512,hmac-sha2-256,umac-128@openssh.com"
+
+  handlers:
+    - name: apply sysctl settings
+      ansible.builtin.command: sysctl --system
+      changed_when: true
+
+    - name: restart ssh
+      ansible.builtin.service:
+        name: ssh
+        state: restarted
+
+    - name: restart fail2ban
+      ansible.builtin.service:
+        name: fail2ban
+        state: restarted
+
+  tasks:
+    - name: Update apt cache
+      ansible.builtin.apt:
+        update_cache: true
+        cache_valid_time: 3600
+      check_mode: false
+
+    - name: Upgrade installed packages safely
+      ansible.builtin.apt:
+        upgrade: safe
+        autoremove: false
+        autoclean: true
+      register: apt_upgrade
+
+    - name: Ensure libsqlite3-0 is updated
+      ansible.builtin.apt:
+        name: libsqlite3-0
+        state: latest
+
+    - name: Install hardening packages
+      ansible.builtin.apt:
+        name:
+          - libpam-pwquality
+          - fail2ban
+          - auditd
+          - audispd-plugins
+          - sysstat
+          - ufw
+        state: present
+
+    - name: Deploy sysctl hardening
+      ansible.builtin.copy:
+        dest: /etc/sysctl.d/99-p2-hardening.conf
+        owner: root
+        group: root
+        mode: '0644'
+        content: |
+          # P2 hardening
+          net.ipv4.tcp_timestamps = 0
+          net.ipv4.conf.all.accept_redirects = 0
+          net.ipv4.conf.default.accept_redirects = 0
+          net.ipv4.conf.all.accept_source_route = 0
+          net.ipv4.conf.default.accept_source_route = 0
+          net.ipv4.conf.all.log_martians = 1
+          net.ipv4.conf.default.rp_filter = 1
+          net.ipv4.conf.all.rp_filter = 1
+          net.ipv4.icmp_echo_ignore_broadcasts = 1
+          net.ipv4.icmp_ignore_bogus_error_responses = 1
+          fs.suid_dumpable = 0
+      notify: apply sysctl settings
+
+    - name: Apply sysctl settings now
+      ansible.builtin.command: sysctl --system
+      changed_when: false
+
+    - name: Deploy SSH hardening configuration
+      ansible.builtin.copy:
+        dest: /etc/ssh/sshd_config.d/99-p2-hardening.conf
+        owner: root
+        group: root
+        mode: '0600'
+        validate: '/usr/sbin/sshd -t -f %s'
+        content: |
+          # P2 SSH hardening
+          # PasswordAuthentication remains enabled for the GVM credentialed scan.
+          PermitRootLogin no
+          MaxAuthTries 3
+          MaxSessions 2
+          X11Forwarding no
+          AllowAgentForwarding no
+          AllowTcpForwarding no
+          ClientAliveInterval 300
+          ClientAliveCountMax 2
+          TCPKeepAlive no
+          LogLevel VERBOSE
+          MACs {{ authorized_macs }}
+      notify: restart ssh
+
+    - name: Reload SSH after hardening
+      ansible.builtin.service:
+        name: ssh
+        state: reloaded
+
+    - name: Configure password quality
+      ansible.builtin.lineinfile:
+        path: /etc/security/pwquality.conf
+        regexp: '^#?\s*{{ item.key }}\s*='
+        line: '{{ item.key }} = {{ item.value }}'
+      loop:
+        - { key: 'minlen', value: '12' }
+        - { key: 'dcredit', value: '-1' }
+        - { key: 'ucredit', value: '-1' }
+        - { key: 'lcredit', value: '-1' }
+        - { key: 'ocredit', value: '-1' }
+        - { key: 'retry', value: '3' }
+
+    - name: Configure account password aging and umask
+      ansible.builtin.lineinfile:
+        path: /etc/login.defs
+        regexp: '^#?\s*{{ item.key }}\s+'
+        line: '{{ item.key }} {{ item.value }}'
+      loop:
+        - { key: 'PASS_MAX_DAYS', value: '365' }
+        - { key: 'PASS_MIN_DAYS', value: '1' }
+        - { key: 'PASS_WARN_AGE', value: '7' }
+        - { key: 'UMASK', value: '027' }
+
+    - name: Limit core dumps
+      ansible.builtin.copy:
+        dest: /etc/security/limits.d/99-p2-hardening.conf
+        owner: root
+        group: root
+        mode: '0644'
+        content: |
+          # P2 hardening: prevent core dumps
+          * hard core 0
+
+    - name: Configure fail2ban SSH jail
+      ansible.builtin.copy:
+        dest: /etc/fail2ban/jail.d/99-sshd.local
+        owner: root
+        group: root
+        mode: '0644'
+        content: |
+          [sshd]
+          enabled = true
+          backend = systemd
+          maxretry = 5
+          findtime = 10m
+          bantime = 10m
+          ignoreip = 127.0.0.1/8 ::1
+      notify: restart fail2ban
+
+    - name: Restart fail2ban after hardening
+      ansible.builtin.service:
+        name: fail2ban
+        state: restarted
+
+    - name: Enable auditd and sysstat
+      ansible.builtin.service:
+        name: '{{ item }}'
+        enabled: true
+        state: started
+      loop:
+        - auditd
+        - sysstat
+
+    - name: Add legal login banner
+      ansible.builtin.copy:
+        dest: '{{ item }}'
+        owner: root
+        group: root
+        mode: '0644'
+        content: |
+          Authorized access only. Disconnect immediately if you are not an authorized user.
+      loop:
+        - /etc/issue
+        - /etc/issue.net
+
+    - name: Allow SSH from the management network before enabling UFW
+      ansible.builtin.command: ufw allow from 192.168.10.0/24 to any port 22 proto tcp
+      register: ufw_allow_ssh
+      changed_when: "'Rule added' in ufw_allow_ssh.stdout or 'Rule updated' in ufw_allow_ssh.stdout"
+
+
+    - name: Set UFW default incoming policy
+      ansible.builtin.command: ufw default deny incoming
+      register: ufw_default_incoming
+      changed_when: "'Default incoming policy changed' in ufw_default_incoming.stdout"
+
+    - name: Set UFW default outgoing policy
+      ansible.builtin.command: ufw default allow outgoing
+      register: ufw_default_outgoing
+      changed_when: "'Default outgoing policy changed' in ufw_default_outgoing.stdout"
+
+    - name: Enable UFW
+      ansible.builtin.command: ufw --force enable
+      register: ufw_enable
+      changed_when: "'Firewall is active' in ufw_enable.stdout"
+
+    - name: Check whether a reboot is required
+      ansible.builtin.stat:
+        path: /var/run/reboot-required
+      register: reboot_required
+
+    - name: Report reboot requirement
+      ansible.builtin.debug:
+        msg: "{{ inventory_hostname }} requires a reboot."
+      when: reboot_required.stat.exists
+
+
