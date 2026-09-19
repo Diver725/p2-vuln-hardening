@@ -11,3 +11,6 @@ id_rsa
 id_rsa.pub
 .env
 secrets/
+
+# 本地紧急备份，不入库
+backups/

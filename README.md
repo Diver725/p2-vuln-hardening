@@ -27,7 +27,7 @@ Ubuntu 管理机（Ansible 控制端 + GVM 漏洞扫描）+ Lynis（基线审计
 ## 当前状态
 - [x] 第 1 周：资产发现 + Ansible 连通（inventory + ansible ping 成功，资产清单已输出）
 - [x] 第 2 周 A：Lynis 3.0.9 基线审计（三台加固前结果：hardening_index=57、warnings=2、suggestions=48；报告已输出）
-- [ ] 第 2 周 B：GVM 漏洞扫描与漏洞报告
+- [x] 第 2 周 B：GVM 完整认证扫描（3/3 主机、0 Critical、0 High、12 Medium、9 Low；扫描结果分析已输出）
 - [ ] 第 3 周：Ansible 加固剧本（先读懂、先测 1 台、先快照）
 - [ ] 第 4 周：复测对比 + 漏洞闭环报告
 
@@ -36,5 +36,6 @@ Ubuntu 管理机（Ansible 控制端 + GVM 漏洞扫描）+ Lynis（基线审计
 ## 简历描述（STAR，项目完成后补）
 
 ## 面试高频题（项目完成后补）
+
 
 
