@@ -13,3 +13,5 @@
 - [P2 网络基础补课：接口、IP、端口、Host-only 与 NAT](P2网络基础补课.md)
 
 - [GVM 日常检查命令卡](GVM日常检查命令卡.md)
+
+- [Ansible 半扶练习记录](Ansible半扶练习记录.md)

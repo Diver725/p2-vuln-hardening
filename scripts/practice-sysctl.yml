@@ -1,0 +1,19 @@
+---
+- name: P2 Ansible practice
+  hosts: targets
+  become: true
+
+  tasks:
+    - name: Deploy sysctl practice config
+      ansible.builtin.copy:
+        dest: /etc/sysctl.d/98-p2-practice.conf
+        owner: root
+        group: root
+        mode: '0644'
+        content: |
+          kernel.dmesg_restrict = 1
+          kernel.kptr_restrict = 2
+
+    - name: Apply sysctl settings
+      ansible.builtin.command: sysctl --system
+      changed_when: false

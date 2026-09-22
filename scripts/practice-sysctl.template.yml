@@ -1,0 +1,19 @@
+---
+- name: P2 Ansible practice
+  hosts: <FILL_HOST_GROUP>
+  become: <FILL_TRUE_OR_FALSE>
+
+  tasks:
+    - name: Deploy sysctl practice config
+      ansible.builtin.copy:
+        dest: <FILL_SYSCTL_FILE_PATH>
+        owner: root
+        group: root
+        mode: '0644'
+        content: |
+          <FILL_SYSCTL_KEY_1> = 1
+          <FILL_SYSCTL_KEY_2> = 2
+
+    - name: Apply sysctl settings
+      ansible.builtin.command: <FILL_SYSCTL_APPLY_COMMAND>
+      changed_when: false
