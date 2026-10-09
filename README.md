@@ -31,12 +31,10 @@ Ubuntu 管理机（Ansible 控制端 + GVM 漏洞扫描）+ Lynis（基线审计
 - [x] 第 3 周：Ansible 加固剧本（已完成单台验证和批量执行；UFW、SSH、sysctl、fail2ban、审计等已生效）
 - [x] 第 4 周：Lynis/GVM 复测与漏洞闭环（加固后 0 Low、9 Medium 环境残余风险；对比报告已输出）
 
-## 技能点清单（项目完成后补，对齐岗位 JD 关键词）
+## 项目成果
 
-## 简历描述（STAR，项目完成后补）
-
-## 面试高频题（项目完成后补）
-
-
-
+- 完成 4 台 Ubuntu 主机的资产发现、Ansible 管理链路和基线核查。
+- 使用 GVM 与 Lynis 建立加固前风险基线并实施批量加固。
+- Lynis hardening index 从 57 提升到 75，warnings 从 2 降到 0。
+- GVM Low 风险从 9 降到 0，并记录 CPU 微码类残余风险。
 
